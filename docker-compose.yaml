@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  api:
+    image: pastebim:latest
+    restart: always
+    network_mode: "host"
+    ports:
+      - "6969:6969"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
