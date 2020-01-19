@@ -34,30 +34,24 @@ proc plug(l: int): string =
 let server = newAsyncHttpServer()
 
 
-
 let handler = get[
-  path("/")[
-    ok("""""")
-  ]
-] ~
-get[
-  path("/p")[
-    queryString(proc(p: StringTableRef): auto =
-      let r = readFile(joinPath(pastedir, p["id"]))
+  pathChunk("/p")[
+    segment(proc(p: string): auto =
+      let r = readFile(joinPath(pastedir, p))
       ok(r)
     )
   ]
 ] ~ 
 post[
-  path("/")[
+  path("/p")[
     multipart(proc(s: MultiPart): auto =
-      let filename = joinpath(pastedir, plug(plugsize))
+      let filename = plug(plugsize)
       if s.files.hasKey plugname:
-        writeFile(filename, s.files[plugname].content)
+        writeFile(joinpath(pastedir, filename), s.files[plugname].content)
         ok(host & filename)
 
       elif s.fields.hasKey plugname:
-        writeFile(filename, s.fields[plugname])
+        writeFile(joinpath(pastedir, filename), s.fields[plugname])
         ok(host & filename)
 
       else:
