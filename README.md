@@ -16,6 +16,10 @@ or
 
 ```echo "😸" | curl -F "f=<-" http://your.server```
 
+### reading 
+to get pastes back, it's easy:
+```curl "http://your.server/plug```
+
 ## How to Set Up the Server
 
 First, modify config.toml to your liking.
