@@ -1,0 +1,8 @@
+[settings]
+pastedir = "pastes"
+plugsize = 5
+plugname = "f"
+
+[server]
+host = "http://paste.neet.space/"
+port = 8080
