@@ -26,10 +26,9 @@ randomize()
 proc plug(l: int): string =
   let letters = toSeq('A' .. 'z')
   for _ in .. l:
-    if result.len != l:
-      let r = letters[rand(0..<letters.len)]
-      if isAlphaNumeric(r) == true:
-        add(result, r)
+    let r = letters[rand(0..<letters.len)]
+    if isAlphaNumeric(r) == true:
+      add(result, r)
 
 # HTTP server
 let server = newAsyncHttpServer()
@@ -44,7 +43,7 @@ let handler = get[
   ]
 ] ~ 
 post[
-  path("/p")[
+  path("/")[
     multipart(proc(s: MultiPart): auto =
       let filename = plug(plugsize)
       if s.files.hasKey plugname:
