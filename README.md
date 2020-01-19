@@ -10,7 +10,9 @@ the `plugname` you specify in `config.toml` as a key.  For example, both of the
 following should work:
 
 ```curl -F f=@data.txt http://your.server/```
+
 or
+
 ```echo "😸" | curl -F "f=<-" http://your.server```
 
 ## How to Set Up the Server
