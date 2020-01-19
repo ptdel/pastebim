@@ -26,9 +26,10 @@ randomize()
 proc plug(l: int): string =
   let letters = toSeq('A' .. 'z')
   for _ in .. l:
-    let r = letters[rand(0..<letters.len)]
-    if isAlphaNumeric(r) == true:
-      add(result, r)
+    if result.len != l:
+      let r = letters[rand(0..<letters.len)]
+      if isAlphaNumeric(r) == true:
+        add(result, r)
 
 # HTTP server
 let server = newAsyncHttpServer()
