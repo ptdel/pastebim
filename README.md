@@ -5,6 +5,7 @@ A pastebim written in Nim.
 
 ## How to Use
 
+### posting
 making a paste is a POST request to either the field or file of a form, using
 the `plugname` you specify in `config.toml` as a key.  For example, both of the
 following should work:
@@ -24,5 +25,8 @@ then, build the binary:
 
 then build the docker image:
 ```docker build -t pastebim .```
+
+run it with `docker-compose`
+```docker-compose up -d```
 
 then probably put that behind nginx or somethin.

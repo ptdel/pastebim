@@ -5,6 +5,8 @@ services:
     image: pastebim:latest
     restart: always
     network_mode: "host"
+    volumes:
+      - ~/pastes:/pastes
     ports:
       - "6969:6969"
     deploy:
